@@ -1,7 +1,7 @@
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
-public class BinarySearchTreeDriver {
+public class BinaryTreeDriver {
 
     public static void main(String[] args) {
         BinarySearchTree b = new BinarySearchTree();
