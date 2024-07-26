@@ -14,10 +14,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     } // insert
 
-    public void deleteNode(T item) {
-
-    } // deleteNode
-
     public void delete(T key) {
 
     } // delete
