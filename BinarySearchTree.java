@@ -37,7 +37,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 return true;
             }
         }
-    }
+    } // searchRecursive
 
     //second urk. we got this hold on the cockroach will leave soon I swear. Just pray queen.
     public void inOrder() {
@@ -63,15 +63,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
                 System.out.print(root.info + "  ");
                 counter++;
             } // if
-            singleParentRecursive(root.left);
-            singleParentRecursive(root.right);
+            singleParentRecursive(root.left, counter);
+            singleParentRecursive(root.right, counter);
             if(counter == 0){
                 System.out.print("None.");
-                return null;
         } // if
-            else{
+          /*  else{
                 return counter;
-            } // else
+            } // else */
          } // while
     } // singleParentRecursive
 
@@ -86,11 +85,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
             if(root.isLeafNode()){
                 leafCount++;
             }
-            leafRecursive(root.left);
-            leafRecursive(root.right);
-    }
-        return leafCount;
-    }
+            leafRecursive(root.left, leafCount);
+            leafRecursive(root.right, leafCount); 
+        }
+    } // leafRecursive
 
     //another one that cannot work on its own
 
