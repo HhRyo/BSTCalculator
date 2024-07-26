@@ -18,10 +18,10 @@ public class BinarySearchTree<T extends Comparable<T>> {
     
     //work on this shit first. done af.
     public boolean search(T item) {
-        return searchResult(root, item);
+        return searchRecursive(root, item);
     } // search
 
-    private bool searchRecursive(NodeType<T> root, T item){
+    private boolean searchRecursive(NodeType<T> root, T item){
         int positionTracker = 0;
         while(root != null){
             positionTracker = item.compareTo(root.info);
