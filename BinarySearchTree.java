@@ -3,8 +3,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public BinarySearchTree() {
         this.root = null;
-        this.left = null;
-        this.right = null;
+        this.root.left = null;
+        this.root.right = null;
     } // binarySearchTree
 
     public void insert(T key) {
@@ -62,17 +62,18 @@ public class BinarySearchTree<T extends Comparable<T>> {
             if(root.isSingleParent()){
                 System.out.print(root.info + "  ");
                 counter++;
-            }
+            } // if
             singleParentRecursive(root.left);
             singleParentRecursive(root.right);
             if(counter == 0){
                 System.out.print("None.");
                 return null;
-        }
+        } // if
             else{
                 return counter;
-            }
-         }
+            } // else
+         } // while
+    } // singleParentRecursive
 
     // this sofa feels comfortable for once.
     public int getNumLeafNodes() {
