@@ -18,21 +18,26 @@ public class BinarySearchTree<T extends Comparable<T>> {
     
     //work on this shit first. done af.
     public boolean search(T item) {
-        searchResult = false;
+        return searchResult(root, item);
+    } // search
+
+    private bool searchRecursive(NodeType<T> root, T item){
         int positionTracker = 0;
         while(root != null){
             positionTracker = item.compareTo(root.info);
             while(positionTracker != 0){
                 if(positionTracker > 0){
-                    search(root.right, item);
+                    searchRecursive(root.right, item);
                 }
                 else if (positionTracker < 0){
-                    search(root.left, item);
+                    searchRecursive(root.left, item);
                 }
             }
+            if (positionTracker == 0){
+                return true;
+            }
         }
-        return searchResult;
-    } // search
+    }
 
     //second urk. we got this hold on the cockroach will leave soon I swear. Just pray queen.
     public void inOrder() {
