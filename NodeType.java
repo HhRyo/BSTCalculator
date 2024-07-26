@@ -4,17 +4,17 @@ public NodeType<T> left;
 public NodeType<T> right;
 
 public NodeType(T info){
-  Info = info;
+  this.info = info;
 }
 
-public bool isLeafNode(){
+public boolean isLeafNode(){
   if(left != null && right != null){
   return true;
   }
   return false;
 }
 
-public bool isSingleParent(){
+public boolean isSingleParent(){
   if(left != null && right == null || left == null && right != null ){
   return true;
   }
