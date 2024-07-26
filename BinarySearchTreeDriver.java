@@ -82,7 +82,7 @@ public class BinarySearchTreeDriver {
             else if(userInput.equals("s")){
                  System.out.print("Enter a value to search: ");
                 inputVal = listScan.next();
-                bool isTrue = false;
+                boolean isTrue = false;
                 if(userType.equals("i")){
                     isTrue = list.search(Integer.parseInt(inputVal));
                 }
@@ -96,7 +96,7 @@ public class BinarySearchTreeDriver {
                     System.out.println("Item is found in the tree."); 
                         }
                 else{
-                    System.println("Item is not found in the tree.");
+                    System.out.println("Item is not found in the tree.");
                 }
             }
 
