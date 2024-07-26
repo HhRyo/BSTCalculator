@@ -50,14 +50,21 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     //THE FUCKING COCKROACH DISAPPEARED AH HELLLL NAW WE ARE GOING UPSTAIRS AND FINISHING THIS ON THE SOFA
     public void getSingleParent() {
-        int counter = 0; //push this out because it'll make it confusing
-        while (root != null){
+        int counter = 0;
+        if (getSingleParentHelper(root, counter) == null){
+            System.out.println("None");
+        }
+    } // getSingleParent
+
+   // need to make an another function for getSingleParent because it won't work on its own
+    private void singleParentRecursive(NodeType<T> root, int counter){
+         while (root != null){
             if(root.isSingleParent()){
                 System.out.print(root.info + "  ");
                 counter++;
             }
-            getSingleParent(root.left);
-            getSingleParent(root.right);
+            singleParentRecursive(root.left);
+            singleParentRecursive(root.right);
             if(counter == 0){
                 System.out.print("None.");
                 return null;
@@ -65,20 +72,24 @@ public class BinarySearchTree<T extends Comparable<T>> {
             else{
                 return counter;
             }
-    } // getSingleParent
-
-   // need to make an another function for getSingleParent because it won't work on its own
+         }
 
     // this sofa feels comfortable for once.
     public int getNumLeafNodes() {
         int leafCount = 0;  //another one to push out
-        while (root != null){
+        leafRecursive(root, leafCount);
+    } // getNumLeafNodes
+
+    private void leafRecursive(NodeType<T> root, int leafCount){
+         while (root != null){
             if(root.isLeafNode()){
                 leafCount++;
             }
-            getSingleParent(root.left);
-            getSingleParent(root.right);
-    } // getNumLeafNodes
+            leafRecursive(root.left);
+            leafRecursive(root.right);
+    }
+        return leafCount;
+    }
 
     //another one that cannot work on its own
 
