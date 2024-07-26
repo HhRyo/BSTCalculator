@@ -1,4 +1,4 @@
-rimport java.io.File;
+import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 public class BinarySearchTreeDriver {
@@ -50,10 +50,10 @@ public class BinarySearchTreeDriver {
                 if(userType.equals("i")){
                     list.insert(Integer.parseInt(inputVal));
                 }
-                else if(userType.equals("d"){
+                else if(userType.equals("d")){
                     list.insert(Double.parseDouble(inputVal));
                 }
-                else if(userType.equals("s"){
+                else if(userType.equals("s")){
                     list.insert(inputVal);
             }
             }
@@ -65,10 +65,10 @@ public class BinarySearchTreeDriver {
                 if(userType.equals("i")){
                     list.delete(Integer.parseInt(inputVal));
                 }
-                else if(userType.equals("d"){
+                else if(userType.equals("d")){
                     list.delete(Double.parseDouble(inputVal));
                 }
-                else if(userType.equals("s"){
+                else if(userType.equals("s")){
                     list.delete(inputVal);
             }
             }
@@ -86,10 +86,10 @@ public class BinarySearchTreeDriver {
                 if(userType.equals("i")){
                     isTrue = list.search(Integer.parseInt(inputVal));
                 }
-                else if(userType.equals("d"){
+                else if(userType.equals("d")){
                     isTrue = list.search(Double.parseDouble(inputVal));
                 }
-                else if(userType.equals("s"){
+                else if(userType.equals("s")){
                     isTrue = list.search(inputVal);
             }
                 if(isTrue == true){
@@ -116,10 +116,10 @@ public class BinarySearchTreeDriver {
                 if(userType.equals("i")){
                     list.getCousins(Integer.parseInt(inputVal));
                 }
-                else if(userType.equals("d"){
+                else if(userType.equals("d")){
                     list.getCousins(Double.parseDouble(inputVal));
                 }
-                else if(userType.equals("s"){
+                else if(userType.equals("s")){
                     list.getCousins(inputVal);
             }
 
