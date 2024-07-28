@@ -12,14 +12,27 @@ public class BinarySearchTreeDriver {
             String txt = args[0];
             File file = new File(txt);
             Scanner scan = new Scanner(file);
+             //have a nodeType object ready;
             if (scan.hasNextInt()) {
-                //int
+                BinarySearchTree<Integer> list = new BinarySearchTree<Integer>;
+                while (scan.hasNext()) {
+                Nodetype node = new NodeType(scan.nextInt());
+                list.insert(node);
+            }
             } 
             else if (scan.hasNextDouble()){
-                //double
+                BinarySearchTree<Double> list = new BinarySearchTree<Double>;
+                while (scan.hasNext()) {
+                Nodetype node = new NodeType(scan.nextInt());
+                list.insert(node);
+            }    
             }
             else {
-                //string
+                BinarySearchTree<String> list = new BinarySearchTree<String>;
+                while (scan.hasNext()) {
+                Nodetype node = new NodeType(scan.nextInt());
+                list.insert(node);
+            }
             }
              catch (FileNotFoundException fnf) {
             System.err.println("File not Found");
