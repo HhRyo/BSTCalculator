@@ -39,6 +39,7 @@ public class BinarySearchTreeDriver {
 
         Scanner listScan = new Scanner(System.in);
         String userInput = null;
+        String inputVal = null;
         while(!userInput.equals("q")){
             userInput = listScan.next();
 
