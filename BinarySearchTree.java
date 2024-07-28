@@ -47,8 +47,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
     } // inOrder
 
     public void getSingleParent() {
-        int counter = 0;
-        if (getSingleParentHelper(root, counter) == null){
+        int counter = null;
+        if (singleParentRecursive(root, counter) == null){
             System.out.println("None");
         }
     } // getSingleParent
