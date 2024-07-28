@@ -16,7 +16,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
     } // delete
 
     
-    //work on this shit first. done af.
     public boolean search(T item) {
         return searchRecursive(root, item);
     } // search
