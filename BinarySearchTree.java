@@ -39,7 +39,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     } // searchRecursive
 
-    //second urk. we got this hold on the cockroach will leave soon I swear. Just pray queen.
     public void inOrder() {
         while(root.info != null){
             inOrder(root.left);
@@ -48,7 +47,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     } // inOrder
 
-    //THE FUCKING COCKROACH DISAPPEARED AH HELLLL NAW WE ARE GOING UPSTAIRS AND FINISHING THIS ON THE SOFA
     public void getSingleParent() {
         int counter = 0;
         if (getSingleParentHelper(root, counter) == null){
@@ -56,7 +54,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     } // getSingleParent
 
-   // need to make an another function for getSingleParent because it won't work on its own
     private void singleParentRecursive(NodeType<T> root, int counter){
          while (root != null){
             if(root.isSingleParent()){
@@ -74,7 +71,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
          } // while
     } // singleParentRecursive
 
-    // this sofa feels comfortable for once.
     public int getNumLeafNodes() {
         int leafCount = 0;  //another one to push out
         leafRecursive(root, leafCount);
@@ -90,7 +86,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     } // leafRecursive
 
-    //another one that cannot work on its own
 
     public T getCousins(NodeType<T> node) {
         //putting T as return type bc I assume we're returning the info of the cousin //yeah def
