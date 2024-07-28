@@ -5,8 +5,8 @@ public class BinarySearchTreeDriver {
 
     public static void main(String[] args) {
         //try catch for args exception
+
         
-        BinarySearchTree b = new BinarySearchTree();
         Scanner scan = new Scanner(System.in);
 
         //figure out what input type
@@ -14,13 +14,13 @@ public class BinarySearchTreeDriver {
         String userType = scan.next();
 
         if(userType.equals("i")){
-            list = new BinarySearchTree<Integer>();
+           BinarySearchTree<Integer> list = new BinarySearchTree<Integer>();
         } 
         else if(userType.equals("d")){
-            list = new BinarySearchTree<Double>();
+           BinarySearchTree<Double> list = new BinarySearchTree<Double>();
         }
         else if(userType.equals("s")){
-            list = new BinarySearchTree<String>();
+           BinarySearchTree<String> list = new BinarySearchTree<String>();
         }
         else {
             System.out.println("Invalid input.");
