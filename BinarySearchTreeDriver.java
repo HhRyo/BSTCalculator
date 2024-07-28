@@ -12,10 +12,14 @@ public class BinarySearchTreeDriver {
             String txt = args[0];
             File file = new File(txt);
             Scanner scan = new Scanner(file);
-            SortedLinkedList theList = new SortedLinkedList(); 
-            while (scan.hasNext()) {
-                ItemType item = new ItemType(scan.nextInt());
-                theList.insertItem(item);
+            if (scan.hasNextInt()) {
+                //int
+            } 
+            else if (scan.hasNextDouble()){
+                //double
+            }
+            else {
+                //string
             }
              catch (FileNotFoundException fnf) {
             System.err.println("File not Found");
@@ -28,16 +32,7 @@ public class BinarySearchTreeDriver {
         System.out.println("Enter list type (i - int, d - double, s - string): ");
         String userType = scan.next();
 
-        if(userType.equals("i")){
-           BinarySearchTree<Integer> list = new BinarySearchTree<Integer>();
-        } 
-        else if(userType.equals("d")){
-           BinarySearchTree<Double> list = new BinarySearchTree<Double>();
-        }
-        else if(userType.equals("s")){
-           BinarySearchTree<String> list = new BinarySearchTree<String>();
-        }
-        else {
+        if(!userType.equals("i") || !userType.equals("d") || !userType.equals("s")){
             System.out.println("Invalid input.");
             return;
         }
