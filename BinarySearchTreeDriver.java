@@ -5,6 +5,21 @@ public class BinarySearchTreeDriver {
 
     public static void main(String[] args) {
         //try catch for args exception
+         try {
+            //initializing command
+            String command = "";
+            //getting txt file input
+            String txt = args[0];
+            File file = new File(txt);
+            Scanner scan = new Scanner(file);
+            SortedLinkedList theList = new SortedLinkedList(); 
+            while (scan.hasNext()) {
+                ItemType item = new ItemType(scan.nextInt());
+                theList.insertItem(item);
+            }
+             catch (FileNotFoundException fnf) {
+            System.err.println("File not Found");
+        }
 
         Scanner scan = new Scanner(System.in);
 
