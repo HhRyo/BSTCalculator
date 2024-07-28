@@ -4,7 +4,7 @@ import java.io.FileNotFoundException;
 public class BinarySearchTreeDriver {
 
     public static void main(String[] args) {
-        //try catch for args exception
+        // code for reading file - copied from linkedlist but need to update to accomodate to BST Driver
          try {
             //initializing command
             String command = "";
@@ -21,6 +21,7 @@ public class BinarySearchTreeDriver {
             System.err.println("File not Found");
         }
 
+        
         Scanner scan = new Scanner(System.in);
 
         //figure out what input type
@@ -40,6 +41,7 @@ public class BinarySearchTreeDriver {
             System.out.println("Invalid input.");
             return;
         }
+        
 
 
         System.out.println("Commands:\n" +
