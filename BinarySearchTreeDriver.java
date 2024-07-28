@@ -6,7 +6,6 @@ public class BinarySearchTreeDriver {
     public static void main(String[] args) {
         //try catch for args exception
 
-        
         Scanner scan = new Scanner(System.in);
 
         //figure out what input type
