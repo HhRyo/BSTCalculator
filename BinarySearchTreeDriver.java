@@ -16,7 +16,7 @@ public class BinarySearchTreeDriver {
             if (scan.hasNextInt()) {
                 BinarySearchTree<Integer> list = new BinarySearchTree<Integer>();
                 while (scan.hasNext()) {
-                Nodetype node = new NodeType(scan.nextInt());
+                NodeType node = new NodeType(scan.nextInt());
                 list.insert(node);
             }
             } 
