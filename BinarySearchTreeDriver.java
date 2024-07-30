@@ -150,10 +150,10 @@ public class BinarySearchTreeDriver {
                 boolean isTrue = false;
                 isTrue = list.search(Double.parseDouble(inputVal));
                 if(isTrue == true){
-                    System.out.println("Item is found in the tree.");
+                    System.out.println("Item is present in the tree.");
                 } // if
                 else{
-                    System.out.println("Item is not found in the tree.");
+                    System.out.println("Item is not present in the tree.");
                 } // else
             } // else if
 
