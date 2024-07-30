@@ -120,12 +120,19 @@ public class BinarySearchTreeDriver {
         String userInput = "";
         String inputVal = "";
         while(!userInput.equals("q")){
+            System.out.println("Enter a command: ");
             userInput = listScan.next();
             // Insert
             if(userInput.equals("i")){
-                System.out.print("Enter a value to insert: ");
+                System.out.print("In-order: ");
+                list.inOrder();
+                System.out.println();
+                System.out.println("Enter a value to insert: ");
                 inputVal = listScan.next();
                 list.insert(Double.parseDouble(inputVal));
+                System.out.print("In-order: ");
+                list.inOrder();
+                System.out.println();
             } // if - insert
             else if(userInput.equals("d")){
                 System.out.print("Enter a value to delete: ");
@@ -175,12 +182,19 @@ public class BinarySearchTreeDriver {
         String userInput = "";
         String inputVal = "";
         while(!userInput.equals("q")){
+            System.out.println("Enter a command: ");
             userInput = listScan.next();
             // Insert
             if(userInput.equals("i")){
-                System.out.print("Enter a value to insert: ");
+                System.out.print("In-order: ");
+                list.inOrder();
+                System.out.println();
+                System.out.println("Enter a value to insert: ");
                 inputVal = listScan.next();
                 list.insert(inputVal);
+                System.out.print("In-order: ");
+                list.inOrder();
+                System.out.println();
             } // if - insert
             else if(userInput.equals("d")){
                 System.out.print("Enter a value to delete: ");
