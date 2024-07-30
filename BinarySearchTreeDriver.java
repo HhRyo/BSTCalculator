@@ -191,7 +191,13 @@ public class BinarySearchTreeDriver {
                 System.out.println();
                 System.out.println("Enter a value to insert: ");
                 inputVal = listScan.next();
-                list.insert(inputVal);
+                bool isTrue = list.search(inputVal)
+                if(isTrue == true){
+                    System.out.println("The item already exists in the tree.");
+                }
+                else{
+                    list.insert(inputVal);
+                }
                 System.out.print("In-order: ");
                 list.inOrder();
                 System.out.println();
