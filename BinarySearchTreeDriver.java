@@ -39,14 +39,14 @@ public class BinarySearchTreeDriver {
                 while (scan.hasNext()) {
                     list.insert(scan.nextDouble());
                 } // while
-                commandDouble(BinarySearchTree<Double> list)
+                commandDouble(list)
                     } // else
             else {
                 BinarySearchTree<String> list = new BinarySearchTree<String>();
                 while (scan.hasNext()) {
                     list.insert(scan.next());
                 } // while
-                commandString(BinarySearchTree<String> list);
+                commandString(list);
             } // else
         } // try
         catch (FileNotFoundException fnf) {
@@ -213,9 +213,7 @@ public class BinarySearchTreeDriver {
             else if(userInput.equals("c")){
                 System.out.print("Enter value to find cousins: ");
                 inputVal = listScan.next();
-                if(userType.equals("i")){
                     list.getCousins(inputVal);
-                } // if
             } // else if
         } // while
     } // commandString
