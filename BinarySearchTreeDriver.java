@@ -12,23 +12,25 @@ public class BinarySearchTreeDriver {
             String txt = args[0];
             File file = new File(txt);
             Scanner scan = new Scanner(file);
+            //Try #1 
+            BinarySearchTree<?> list = null;
              //have a nodeType object ready;
             if (scan.hasNextInt()) {
-                BinarySearchTree<Integer> list = new BinarySearchTree<Integer>();
+                list = new BinarySearchTree<Integer>();
                 while (scan.hasNext()) {
                 NodeType node = new NodeType(scan.nextInt());
                 list.insert(node);
             }
             } 
             else if (scan.hasNextDouble()){
-                BinarySearchTree<Double> list = new BinarySearchTree<Double>();
+                list = new BinarySearchTree<Double>();
                 while (scan.hasNext()) {
                 NodeType node = new NodeType(scan.nextInt());
                 list.insert(node);
             }    
             }
             else {
-                BinarySearchTree<String> list = new BinarySearchTree<String>();
+                list = new BinarySearchTree<String>();
                 while (scan.hasNext()) {
                 NodeType node = new NodeType(scan.nextInt());
                 list.insert(node);
