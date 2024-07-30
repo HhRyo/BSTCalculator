@@ -30,27 +30,24 @@ public class BinarySearchTree<T extends Comparable<T>> {
     } // delete
 
     
-    public boolean search(T item) {
+   public boolean search(T item) {
         return searchRecursive(root, item);
+
     } // search
 
     private boolean searchRecursive(NodeType<T> root, T item){
-        int positionTracker = 0;
-        while(root != null){
-            positionTracker = item.compareTo(root.info);
-            while(positionTracker != 0){
-                if(positionTracker > 0){
-                    searchRecursive(root.right, item);
-                }
-                else if (positionTracker < 0){
-                    searchRecursive(root.left, item);
-                }
-            }
-            if (positionTracker == 0){
-                return true;
-            }
+        if (root == null) {
+            return false;
         }
+            if(root.info.compareTo(item) > 0){
+                searchRecursive(root.right, item);
+            } // if
+            else if (root.info.compareTo(item) < 0){
+                searchRecursive(root.left, item);
+            } // else if
+            return true;
     } // searchRecursive
+
 
     public void inOrder() {
         printInOrder(root);
