@@ -53,12 +53,17 @@ public class BinarySearchTree<T extends Comparable<T>> {
     } // searchRecursive
 
     public void inOrder() {
-        while(root.info != null){
-            inOrder(root.left);
-            System.out.print(root.info + " ");
-            inOrder(root.right);
-        }
+        printInOrder(root);
     } // inOrder
+
+    public void printInOrder(NodeType<T> node) {
+        if (node != null) {
+            printInOrder(node.left);
+            System.out.println(node.info);
+            printInOrder(node.right);
+        } // if
+    } // printInOrder
+
 
     public void getSingleParent() {
         int counter = null;
