@@ -12,20 +12,20 @@ public class BinarySearchTreeDriver {
             Scanner input = new Scanner(System.in);
             System.out.println("Enter list type (i - int, d - double, s - string): ");
             String userType = input.next();
-            if(!userType.equals("i") || !userType.equals("d") || !userType.equals("s")){
+            /*            if(!userType.equals("i") || !userType.equals("d") || !userType.equals("s")){
                 System.out.println("Invalid input.");
                 return;
-            } // if
+                } // if */
 
             System.out.println("Commands:\n" +
-                           "  (i) - Insert Item\n" +
-                           "  (d) - Delete Item\n" +
-                           "  (p) - Print Tree\n" +
-                           "  (s) - Search Item\n" +
-                           "  (l) - Count Leaf Nodes\n" +
-                           "  (sp) - Find Single Parents\n" +
-                           "  (c) - Find Cousins\n" +
-                           "  (q) - Quit program");
+                               "  (i) - Insert Item\n" +
+                               "  (d) - Delete Item\n" +
+                               "  (p) - Print Tree\n" +
+                               "  (s) - Search Item\n" +
+                               "  (l) - Count Leaf Nodes\n" +
+                               "  (sp) - Find Single Parents\n" +
+                               "  (c) - Find Cousins\n" +
+                               "  (q) - Quit program");
 
             if (scan.hasNextInt()) {
                 BinarySearchTree<Integer> list = new BinarySearchTree<Integer>();
@@ -39,8 +39,8 @@ public class BinarySearchTreeDriver {
                 while (scan.hasNext()) {
                     list.insert(scan.nextDouble());
                 } // while
-                commandDouble(list)
-                    } // else
+                commandDouble(list);
+            } // else
             else {
                 BinarySearchTree<String> list = new BinarySearchTree<String>();
                 while (scan.hasNext()) {
@@ -56,11 +56,10 @@ public class BinarySearchTreeDriver {
 
     public static void commandInt(BinarySearchTree<Integer> list) {
         Scanner listScan = new Scanner(System.in);
-        String userInput = null;
-        String inputVal = null;
+        String userInput = "";
+        String inputVal = "";
         while(!userInput.equals("q")){
             userInput = listScan.next();
-
             // Insert
             if(userInput.equals("i")){
                 System.out.print("Enter a value to insert: ");
@@ -96,30 +95,30 @@ public class BinarySearchTreeDriver {
             } // else if
 
             else if(userInput.equals("sp")){
-                int singleParents = list.getSingleParent();
-                System.out.println("Single Parents: " + singleParents);
+                System.out.println("Single Parents: " );
+                list.getSingleParent();
             } // else if
 
             else if(userInput.equals("c")){
                 System.out.print("Enter value to find cousins: ");
                 inputVal = listScan.next();
-                list.getCousins(Integer.parseInt(inputVal));
+                NodeType<Integer> node = new NodeType<>(Integer.parseInt(inputVal));
+                list.getCousins(node);
             } // else if
-
         } // while
     } // commandInt
 
     public static void commandDouble(BinarySearchTree<Double> list) {
         Scanner listScan = new Scanner(System.in);
-        String userInput = null;
-        String inputVal = null;
+        String userInput = "";
+        String inputVal = "";
         while(!userInput.equals("q")){
             userInput = listScan.next();
             // Insert
             if(userInput.equals("i")){
                 System.out.print("Enter a value to insert: ");
                 inputVal = listScan.next();
-                list.insert(Integer.parseInt(inputVal));
+                list.insert(Double.parseDouble(inputVal));
             } // if - insert
             else if(userInput.equals("d")){
                 System.out.print("Enter a value to delete: ");
@@ -150,23 +149,24 @@ public class BinarySearchTreeDriver {
             } // else if
 
             else if(userInput.equals("sp")){
-                int singleParents = list.getSingleParent();
-                System.out.println("Single Parents: " + singleParents);
+                //                int singleParents = list.getSingleParent();
+                System.out.println("Single Parents: " );
+                list.getSingleParent();
             } // else if
 
             else if(userInput.equals("c")){
                 System.out.print("Enter value to find cousins: ");
                 inputVal = listScan.next();
-                if(userType.equals("i")){
-                    list.getCousins(Double.parseDouble(inputVal));
-                } // if
+                NodeType<Double> node = new NodeType<Double>(Double.parseDouble(inputVal));
+                list.getCousins(node);
             } // else if
         } // while
     } // commandDouble
+
     public static void commandString(BinarySearchTree<String> list) {
         Scanner listScan = new Scanner(System.in);
-        String userInput = null;
-        String inputVal = null;
+        String userInput = "";
+        String inputVal = "";
         while(!userInput.equals("q")){
             userInput = listScan.next();
             // Insert
@@ -204,15 +204,16 @@ public class BinarySearchTreeDriver {
             } // else if
 
             else if(userInput.equals("sp")){
-                int singleParents = list.getSingleParent();
-                System.out.println("Single Parents: " + singleParents);
+                System.out.println("Single Parents: " );
+                list.getSingleParent();
             } // else if
 
             else if(userInput.equals("c")){
                 System.out.print("Enter value to find cousins: ");
                 inputVal = listScan.next();
-                    list.getCousins(inputVal);
-            } // else if
+                NodeType<String> node = new NodeType<>(inputVal);
+                list.getCousins(node);
+            } // if
         } // while
     } // commandString
 } // BinarySearchTreeDriver
