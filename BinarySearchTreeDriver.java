@@ -24,7 +24,7 @@ public class BinarySearchTreeDriver {
             else if (scan.hasNextDouble()){
                 list = new BinarySearchTree<Double>();
                 while (scan.hasNext()) {
-                list.insert(scan.hasNextDouble());
+                list.insert(scan.nextDouble());
             }    
             }
             else {
