@@ -103,9 +103,7 @@ public class BinarySearchTreeDriver {
             else if(userInput.equals("c")){
                 System.out.print("Enter value to find cousins: ");
                 inputVal = listScan.next();
-                if(userType.equals("i")){
-                    list.getCousins(Integer.parseInt(inputVal));
-                } // if
+                list.getCousins(Integer.parseInt(inputVal));
             } // else if
 
         } // while
