@@ -101,9 +101,24 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     } // leafRecursive
 
-
+/**
     public T getCousins(NodeType<T> node) {
-        //putting T as return type bc I assume we're returning the info of the cousin //yeah def
+        int counter = 0; 
+        boolean mainFound = false;
+        while(mainFound == false){
+            while (!node.right == null || !node.left == null){
+            // count how many steps it takes to find main item
+            mainFound == true;
+            }
+        }
+        
+        for (int i = 0; i < counter - 1; i++){
+            //go down that many times 
+            //take the left and the right of the leftmost 
+            //print out the values with a space in between each.
+            //keep on going until the rightmost is reached. 
+        }
     } // getCousins
+**/
 
 } // BinarySearchTree
