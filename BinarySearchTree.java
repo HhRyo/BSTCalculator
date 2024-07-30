@@ -82,10 +82,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
             singleParentRecursive(root.right, counter);
             if(counter == 0){
                 System.out.print("None.");
-        } // if
-          /*  else{
-                return counter;
-            } // else */
+            } // if    
          } // while
     } // singleParentRecursive
 
