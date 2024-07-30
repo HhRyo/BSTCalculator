@@ -8,8 +8,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
     } // binarySearchTree
 
     public void insert(T key) {
-
+        root = insertAuxiliary(root, key);
     } // insert
+
+    private NodeType<T> insertAuxiliary(NodeType<T> node, T key) {
+        if (node == null) {
+            node = new NodeType<>(key);
+            return node;
+        } // if
+        if (key.compareTo(node.info) < 0) {
+            node.left = insertAuxiliary(node.left, key);
+        } else if (key.compareTo(node.info) > 0) {
+            node.right = insertAuxiliary(node.right, key);
+        } // else if
+        return node;
+    } // insertAuxiliary
+
 
     public void delete(T key) {
 
