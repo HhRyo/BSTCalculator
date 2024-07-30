@@ -5,35 +5,35 @@ public class BinarySearchTreeDriver {
 
     public static void main(String[] args) {
         // code for reading file - copied from linkedlist but need to update to accomodate to BST Driver
+         BinarySearchTree<?> list = null;
+         Scanner scan = new Scanner(file);
          try {
             //initializing command
             String command = "";
             //getting txt file input
             String txt = args[0];
             File file = new File(txt);
-            Scanner scan = new Scanner(file);
             //Try #1 
-            BinarySearchTree<?> list = null;
              //have a nodeType object ready;
             if (scan.hasNextInt()) {
                 list = new BinarySearchTree<Integer>();
                 while (scan.hasNext()) {
                 NodeType node = new NodeType(scan.nextInt());
-                list.insert(node);
+                list.insert(scan.nextInt());
             }
             } 
             else if (scan.hasNextDouble()){
                 list = new BinarySearchTree<Double>();
                 while (scan.hasNext()) {
                 NodeType node = new NodeType(scan.nextInt());
-                list.insert(node);
+                list.insert(scan.hasNextDouble());
             }    
             }
             else {
                 list = new BinarySearchTree<String>();
                 while (scan.hasNext()) {
-                NodeType node = new NodeType(scan.nextInt());
-                list.insert(node);
+                NodeType node = new NodeType(scan.next());
+                list.insert(scan.next());
             }
             }
          }
