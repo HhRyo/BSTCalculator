@@ -6,15 +6,14 @@ public class BinarySearchTreeDriver {
     public static void main(String[] args) {
         // code for reading file - copied from linkedlist but need to update to accomodate to BST Driver
          BinarySearchTree<?> list = null;
-         Scanner scan = new Scanner(file);
          try {
             //initializing command
-            String command = "";
             //getting txt file input
-            String txt = args[0];
-            File file = new File(txt);
             //Try #1 
              //have a nodeType object ready;
+             String txt = args[0];
+             File file = new File(txt);
+             Scanner scan = new Scanner(file);
             if (scan.hasNextInt()) {
                 list = new BinarySearchTree<Integer>();
                 while (scan.hasNext()) {
