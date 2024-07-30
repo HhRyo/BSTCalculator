@@ -18,21 +18,18 @@ public class BinarySearchTreeDriver {
             if (scan.hasNextInt()) {
                 list = new BinarySearchTree<Integer>();
                 while (scan.hasNext()) {
-                NodeType node = new NodeType(scan.nextInt());
                 list.insert(scan.nextInt());
             }
             } 
             else if (scan.hasNextDouble()){
                 list = new BinarySearchTree<Double>();
                 while (scan.hasNext()) {
-                NodeType node = new NodeType(scan.nextInt());
                 list.insert(scan.hasNextDouble());
             }    
             }
             else {
                 list = new BinarySearchTree<String>();
                 while (scan.hasNext()) {
-                NodeType node = new NodeType(scan.next());
                 list.insert(scan.next());
             }
             }
