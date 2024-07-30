@@ -30,7 +30,7 @@ public class BinarySearchTreeDriver {
             else {
                 BinarySearchTree<String> list = new BinarySearchTree<String>();
                 while (scan.hasNext()) {
-                Nodetype node = new NodeType(scan.nextInt());
+                NodeType node = new NodeType(scan.nextInt());
                 list.insert(node);
             }
             }
