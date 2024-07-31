@@ -64,7 +64,7 @@ public class BinarySearchTreeDriver {
             // Insert
             if(userInput.equals("i")){
                 System.out.println("Enter a value to insert: ");
-                inputVal = listScan.next();
+                isTrue = list.search(Integer.parseInt(inputVal));
                 if(list.search(inputVal) == true){
                     System.out.println("The item already exists in the tree.");
                 }
