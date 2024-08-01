@@ -96,25 +96,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
     } // printInOrder
 
 
-    public void getSingleParent() {
-        int counter = null;
-        if (singleParentRecursive(root, counter) == null){
-            System.out.println("None");
-        }
+   public int getSingleParent() {
+        return singleParentRecursive(root);
     } // getSingleParent
 
-    private void singleParentRecursive(NodeType<T> root, int counter){
-         while (root != null){
-            if(root.isSingleParent()){
-                System.out.print(root.info + "  ");
-                counter++;
-            } // if
-            singleParentRecursive(root.left, counter);
-            singleParentRecursive(root.right, counter);
-            if(counter == 0){
-                System.out.print("None.");
-            } // if    
-         } // while
+    private int singleParentRecursive(NodeType<T> root) {
+        int count = 0;
+        if (root != null) {
+            if (root.left == null && root.right != null) {
+                count++;
+            } else if (root.left != null && root.right == null) {
+                count++;
+            } // else if
+                count += singleParentRecursive(root.left);
+                count += singleParentRecursive(root.right);
+        } // if
+        return count;
     } // singleParentRecursive
 
    public int getNumLeafNodes() {
