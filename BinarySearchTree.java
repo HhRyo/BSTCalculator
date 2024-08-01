@@ -98,24 +98,58 @@ public class BinarySearchTree<T extends Comparable<T>> {
         }
     } // leafRecursive
 
-/**
-    public T getCousins(NodeType<T> node) {
-        int counter = 0; 
-        boolean mainFound = false;
-        while(mainFound == false){
-            while (!node.right == null || !node.left == null){
-            // count how many steps it takes to find main item
-            mainFound == true;
-            }
+// get Cousins methods 
+    public void getCousins(NodeType<T> node) {
+    if (root == null || node == null) {
+        System.out.println("No cousins found.");
+        return;
+    }
+
+    int level = findHeight(root, node.info, 1);
+
+    if (level <= 2) {
+        System.out.println("No cousins exist for this node.");
+        return;
+    }
+
+    printCousins(root, node, level);
+}
+
+private int findHeight(NodeType<T> currentNode, T key, int level) {
+    if (currentNode == null) {
+        return 0;
+    }
+    if (currentNode.info.compareTo(key) == 0) {
+        return level;
+    }
+
+    int downLevel = findHeight(currentNode.left, key, level + 1);
+    if (downLevel != 0) {
+        return downLevel;
+    }
+
+    return findHeight(currentNode.right, key, level + 1);
+}
+
+private void printCousins(NodeType<T> currentNode, NodeType<T> node, int height) {
+    if (currentNode == null || height < 2) {
+        return;
+    }
+
+    if (height == 2) {
+        if ((currentNode.left == node) || (currentNode.right == node)) {
+            return;
         }
-        
-        for (int i = 0; i < counter - 1; i++){
-            //go down that many times 
-            //take the left and the right of the leftmost 
-            //print out the values with a space in between each.
-            //keep on going until the rightmost is reached. 
+        if (currentNode.left != null) {
+            System.out.print(currentNode.left.info + " ");
         }
-    } // getCousins
-**/
+        if (currentNode.right != null) {
+            System.out.print(currentNode.right.info + " ");
+        }
+    } else {
+        printCousins(currentNode.left, node, height - 1);
+        printCousins(currentNode.right, node, height - 1);
+    }
+}
 
 } // BinarySearchTree
