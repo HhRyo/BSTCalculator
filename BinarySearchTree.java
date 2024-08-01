@@ -26,8 +26,42 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 
     public void delete(T key) {
-
+        root = deleteAuxiliary(root, key);
     } // delete
+
+    public NodeType<T> deleteAuxiliary(NodeType<T> root, T key) {
+        NodeType<T> curr = root;
+        if (curr == null) {
+            return curr;
+        } // if
+        if (curr.info.compareTo(key) > 0) {
+            curr.left = deleteAuxiliary(curr.left, key);
+        } else if (curr.info.compareTo(key) < 0) {
+            curr.right = deleteAuxiliary(curr.right, key);
+        } else {
+            if (curr.left == null && curr.right == null) {
+                curr = null;
+            } else if (curr.right == null) {
+                curr = curr.left;
+                return curr;
+            } else if (curr.left == null) {
+                curr = curr.right;
+                return curr;
+            } else {
+                NodeType<T> temp = findMinRight(curr.right);
+                curr.info = temp.info;
+                curr.right = deleteAuxiliary(curr.right, temp.info);
+            } // else
+        } // else
+        return curr;
+    } // deleteAuxiliary
+
+    public NodeType<T> findMinRight(NodeType<T> node) {
+        while (node.left != null) {
+            node = node.left;
+        } // while
+        return node;
+    } // findMinRight
 
     
    public boolean search(T item) {
@@ -83,20 +117,20 @@ public class BinarySearchTree<T extends Comparable<T>> {
          } // while
     } // singleParentRecursive
 
-    public int getNumLeafNodes() {
-        int leafCount = 0;  //another one to push out
-        leafRecursive(root, leafCount);
-    } // getNumLeafNodes
+   public int getNumLeafNodes() {
+        return leafRecursive(root);
+    }
 
-    private void leafRecursive(NodeType<T> root, int leafCount){
-         while (root != null){
-            if(root.isLeafNode()){
-                leafCount++;
-            }
-            leafRecursive(root.left, leafCount);
-            leafRecursive(root.right, leafCount); 
-        }
+    public int leafRecursive(NodeType<T> root) {
+        if (root == null) {
+            return 0;
+        } // if
+        if (root.left == null && root.right == null) {
+            return 1;
+        } // if
+        return leafRecursive(root.left) + leafRecursive(root.right);
     } // leafRecursive
+
 
 // get Cousins methods 
     public void getCousins(NodeType<T> node) {
