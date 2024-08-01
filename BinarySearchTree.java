@@ -1,18 +1,27 @@
+//import files
 import java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
+/** 
+    * Driver: Used to implement user input into manipulating lists with different BST algorithms. 
+    *
+**/
+
 public class BinarySearchTreeDriver<T extends Comparable<T>> {
 
     public static void main(String[] args) {
+        //initializing for different types of files
         BinarySearchTree<Integer> bstInt = new BinarySearchTree<>();
         BinarySearchTree<Double> bstDouble = new BinarySearchTree<>();
         BinarySearchTree<String> bstString = new BinarySearchTree<>();
         Scanner keyboard = new Scanner(System.in);
 
+        // first user-prompt
         System.out.println("Enter list type (i - int, d - double, s - string): ");
         String keyboardInput = keyboard.nextLine();
 
+        // try statement for grabbing list out of file and into a BST implementation
         try {
             File file = new File(args[0]);
             Scanner fileScan = new Scanner(file);
@@ -20,29 +29,29 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
                 while (fileScan.hasNextInt()) {
                     Integer info = Integer.parseInt(fileScan.next());
                     bstInt.insert(info);
-                }
+                } // Integer files
             } else if (keyboardInput.equals("d")) {
                 while (fileScan.hasNextDouble()) {
                     Double info = Double.parseDouble(fileScan.next());
                     bstDouble.insert(info);
-                }
+                } // Double files
             } else if (keyboardInput.equals("s")) {
                 while (fileScan.hasNext()) {
                     String info = fileScan.next();
                     bstString.insert(info);
-                }
+                } // String files
             } else {
                 System.out.println("Invalid input.");
                 fileScan.close();
                 keyboard.close();
                 return;
-            }
+            } // user enters wrong input. This will not work for files if you have inserted the wrong input for the wrong file. 
             fileScan.close();
         } catch (FileNotFoundException fnfe) {
             System.out.println("needs a file");
             keyboard.close();
             return;
-        }
+        } // unsupported file type
 
         System.out.println("Commands:\n" +
                 "  (i) - Insert Item\n" +
