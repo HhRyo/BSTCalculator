@@ -11,7 +11,8 @@ Liam Allen: Worked on the program, debugged the program
 
 ##########################################
 
-Project Description: This program is used to take a list that is provided within a text file and then form a binarySearch tree with those values. Afterwards, the user is then prompted and given freedom on how they want to interact with the tree using the commands that will be provided in step 3. 
+Project Description: This program is used to take a list that is provided within a text file and then form a binarySearch tree with those values. 
+Afterwards, the user is then prompted and given freedom on how they want to interact with the tree using the commands that will be provided in step 3. 
 
 1. In order to compile the program, please enter the following command: 
 
