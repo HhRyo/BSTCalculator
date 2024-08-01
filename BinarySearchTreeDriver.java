@@ -58,6 +58,7 @@ public class BinarySearchTreeDriver {
         Scanner listScan = new Scanner(System.in);
         String userInput = "";
         String inputVal = "";
+        boolean isTrue = false;
         while(!userInput.equals("q")){
             System.out.println("Enter a command: ");
             userInput = listScan.next();
