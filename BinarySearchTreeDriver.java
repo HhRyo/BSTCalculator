@@ -1,4 +1,4 @@
-import java.io.File;
+iimport java.io.File;
 import java.util.Scanner;
 import java.io.FileNotFoundException;
 
@@ -45,14 +45,14 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
         }
 
         System.out.println("Commands:\n" +
-                "  (i) - Insert Item\n" +
-                "  (d) - Delete Item\n" +
-                "  (p) - Print Tree\n" +
-                "  (s) - Search Item\n" +
-                "  (l) - Count Leaf Nodes\n" +
-                "  (sp) - Find Single Parents\n" +
-                "  (c) - Find Cousins\n" +
-                "  (q) - Quit program");
+                           "  (i) - Insert Item\n" +
+                           "  (d) - Delete Item\n" +
+                           "  (p) - Print Tree\n" +
+                           "  (s) - Search Item\n" +
+                           "  (l) - Count Leaf Nodes\n" +
+                           "  (sp) - Find Single Parents\n" +
+                           "  (c) - Find Cousins\n" +
+                           "  (q) - Quit program");
 
         String keyboardIn = "";
         while (!keyboardIn.equals("q")) {
@@ -79,7 +79,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             if (!bstInt.search(Integer.parseInt(inputVal))) {
                 bstInt.insert(Integer.parseInt(inputVal));
             } else {
-                System.out.println("Item already exists in tree.");
+                System.out.println("The item already exists in the tree.");
             }
             bstInt.inOrder();
             System.out.println();
@@ -91,7 +91,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             if (bstInt.search(Integer.parseInt(inputVal))) {
                 bstInt.delete(Integer.parseInt(inputVal));
             } else {
-                System.out.println("Item does not exist in tree.");
+                System.out.println("The number is not present in the tree");
             }
             bstInt.inOrder();
             System.out.println();
@@ -104,16 +104,21 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             inputVal = keyboard.nextLine();
             boolean isTrue = bstInt.search(Integer.parseInt(inputVal));
             if (isTrue) {
-                System.out.println("Item is found in the tree.");
+                System.out.println("Item is present in the tree");
             } else {
-                System.out.println("Item is not found in the tree.");
+                System.out.println("Item is not present in the tree");
             }
         } else if (keyboardIn.equals("l")) {
             int leafs = bstInt.getNumLeafNodes();
-            System.out.println("Leaf count: " + leafs);
+            System.out.println("The number of leaf nodes are " + leafs);
         } else if (keyboardIn.equals("sp")) {
             System.out.println("Single Parents: " + bstInt.getSingleParent());
         } else if (keyboardIn.equals("c")) {
+            System.out.println("in-order: ");
+            bstInt.inOrder();
+            System.out.println("Enter a number: ");
+            inputVal = keyboard.nextLine();
+            System.out.println("Cousins: ");
             // Implement cousin functionality
         }
     }
@@ -128,7 +133,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             if (!bstDouble.search(Double.parseDouble(inputVal))) {
                 bstDouble.insert(Double.parseDouble(inputVal));
             } else {
-                System.out.println("Item already exists in tree.");
+                System.out.println("The item already exists in the tree.");
             }
             bstDouble.inOrder();
             System.out.println();
@@ -140,7 +145,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             if (bstDouble.search(Double.parseDouble(inputVal))) {
                 bstDouble.delete(Double.parseDouble(inputVal));
             } else {
-                System.out.println("Item does not exist in tree.");
+                System.out.println("The number is not present in the tree");
             }
             bstDouble.inOrder();
             System.out.println();
@@ -153,17 +158,22 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             inputVal = keyboard.nextLine();
             boolean isTrue = bstDouble.search(Double.parseDouble(inputVal));
             if (isTrue) {
-                System.out.println("Item is found in the tree.");
+                System.out.println("Item is present in the tree");
             } else {
-                System.out.println("Item is not found in the tree.");
+                System.out.println("Item is not present in the tree");
             }
         } else if (keyboardIn.equals("l")) {
             int leafs = bstDouble.getNumLeafNodes();
-            System.out.println("Leaf count: " + leafs);
+            System.out.println("The number of leaf nodes are " + leafs);
         } else if (keyboardIn.equals("sp")) {
             System.out.println("Single Parents: " + bstDouble.getSingleParent());
         } else if (keyboardIn.equals("c")) {
             // Implement cousin functionality
+            System.out.println("in-order: ");
+            bstDouble.inOrder();
+            System.out.println("Enter a number: ");
+            inputVal = keyboard.nextLine();
+            System.out.println("Cousins: ");
         }
     }
 
@@ -177,7 +187,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             if (!bstString.search(inputVal)) {
                 bstString.insert(inputVal);
             } else {
-                System.out.println("Item already exists in tree.");
+                System.out.println("The item already exists in the tree.");
             }
             bstString.inOrder();
             System.out.println();
@@ -189,7 +199,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             if (bstString.search(inputVal)) {
                 bstString.delete(inputVal);
             } else {
-                System.out.println("Item does not exist in tree.");
+                System.out.println("Item is not present in the tree");
             }
             bstString.inOrder();
             System.out.println();
@@ -202,17 +212,22 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             inputVal = keyboard.nextLine();
             boolean isTrue = bstString.search(inputVal);
             if (isTrue) {
-                System.out.println("Item is found in the tree.");
+                System.out.println("Item is present in the tree.");
             } else {
-                System.out.println("Item is not found in the tree.");
+                System.out.println("Item is not present in the tree");
             }
         } else if (keyboardIn.equals("l")) {
             int leafs = bstString.getNumLeafNodes();
-            System.out.println("Leaf count: " + leafs);
+            System.out.println("The number of leaf nodes are " + leafs);
         } else if (keyboardIn.equals("sp")) {
             System.out.println("Single Parents: " + bstString.getSingleParent());
         } else if (keyboardIn.equals("c")) {
             // Implement cousin functionality
+            System.out.println("in-order: ");
+            bstString.inOrder();
+            System.out.println("Enter a number: ");
+            inputVal = keyboard.nextLine();
+            System.out.println("Cousins: ");
         }
     }
 }
