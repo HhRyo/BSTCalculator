@@ -1,199 +1,228 @@
-public class BinarySearchTree<T extends Comparable<T>> {
-    private NodeType<T> root;
+import java.io.File;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 
-    public BinarySearchTree() {
-        this.root = null;
-    } // binarySearchTree
+public class BinarySearchTreeDriver<T extends Comparable<T>> {
 
-    public void insert(T key) {
-        root = insertAuxiliary(root, key);
-    } // insert
+    public static void main(String[] args) {
+        BinarySearchTree<Integer> bstInt = new BinarySearchTree<>();
+        BinarySearchTree<Double> bstDouble = new BinarySearchTree<>();
+        BinarySearchTree<String> bstString = new BinarySearchTree<>();
+        Scanner keyboard = new Scanner(System.in);
 
-    private NodeType<T> insertAuxiliary(NodeType<T> node, T key) {
-        if (node == null) {
-            node = new NodeType<>(key);
-            return node;
-        } // if
-        if (key.compareTo(node.info) < 0) {
-            node.left = insertAuxiliary(node.left, key);
-        } else if (key.compareTo(node.info) > 0) {
-            node.right = insertAuxiliary(node.right, key);
-        } // else if
-        return node;
-    } // insertAuxiliary
+        System.out.println("Enter list type (i - int, d - double, s - string): ");
+        String keyboardInput = keyboard.nextLine();
 
-
-    public void delete(T key) {
-        root = deleteAuxiliary(root, key);
-    } // delete
-
-    public NodeType<T> deleteAuxiliary(NodeType<T> root, T key) {
-        NodeType<T> curr = root;
-        if (curr == null) {
-            return curr;
-        } // if
-        if (curr.info.compareTo(key) > 0) {
-            curr.left = deleteAuxiliary(curr.left, key);
-        } else if (curr.info.compareTo(key) < 0) {
-            curr.right = deleteAuxiliary(curr.right, key);
-        } else {
-            if (curr.left == null && curr.right == null) {
-                curr = null;
-            } else if (curr.right == null) {
-                curr = curr.left;
-                return curr;
-            } else if (curr.left == null) {
-                curr = curr.right;
-                return curr;
+        try {
+            File file = new File(args[0]);
+            Scanner fileScan = new Scanner(file);
+            if (keyboardInput.equals("i")) {
+                while (fileScan.hasNextInt()) {
+                    Integer info = Integer.parseInt(fileScan.next());
+                    bstInt.insert(info);
+                }
+            } else if (keyboardInput.equals("d")) {
+                while (fileScan.hasNextDouble()) {
+                    Double info = Double.parseDouble(fileScan.next());
+                    bstDouble.insert(info);
+                }
+            } else if (keyboardInput.equals("s")) {
+                while (fileScan.hasNext()) {
+                    String info = fileScan.next();
+                    bstString.insert(info);
+                }
             } else {
-                NodeType<T> temp = findMinRight(curr.right);
-                curr.info = temp.info;
-                curr.right = deleteAuxiliary(curr.right, temp.info);
-            } // else
-        } // else
-        return curr;
-    } // deleteAuxiliary
-
-    public NodeType<T> findMinRight(NodeType<T> node) {
-        while (node.left != null) {
-            node = node.left;
-        } // while
-        return node;
-    } // findMinRight
-
-    
-   public boolean search(T item) {
-        return searchRecursive(root, item);
-
-    } // search
-
-    private boolean searchRecursive(NodeType<T> root, T item){
-        if (root == null) {
-            return false;
-        } else if (root.info.compareTo(item) == 0) {
-            return true;
-        } else if (root.info.compareTo(item) < 0) {
-            return searchRecursive(root.right, item);
-        }
-        return searchRecursive(root.left, item);
-    } // searchRecursive
-
-
-    public void inOrder() {
-        printInOrder(root);
-    } // inOrder
-
-    public void printInOrder(NodeType<T> node) {
-        if (node != null) {
-            printInOrder(node.left);
-            System.out.print(node.info + " ");
-            printInOrder(node.right);
-        } // if
-    } // printInOrder
-
-
-   public int getSingleParent() {
-        return singleParentRecursive(root);
-    } // getSingleParent
-
-    private int singleParentRecursive(NodeType<T> root) {
-        int count = 0;
-        if (root != null) {
-            if (root.left == null && root.right != null) {
-                count++;
-            } else if (root.left != null && root.right == null) {
-                count++;
-            } // else if
-                count += singleParentRecursive(root.left);
-                count += singleParentRecursive(root.right);
-        } // if
-        return count;
-    } // singleParentRecursive
-
-   public int getNumLeafNodes() {
-        return leafRecursive(root);
-    }
-
-    public int leafRecursive(NodeType<T> root) {
-        if (root == null) {
-            return 0;
-        } // if
-        if (root.left == null && root.right == null) {
-            return 1;
-        } // if
-        return leafRecursive(root.left) + leafRecursive(root.right);
-    } // leafRecursive
-
-
-// get Cousins methods 
-   public void getCousins(T key) {
-    NodeType<T> targetNode = searchNode(root, key);
-    if (root == null || targetNode == null) {
-        System.out.println("No cousins found.");
-        return;
-    }
-
-    int level = findHeight(root, key, 1);
-
-    if (level <= 2) {
-        System.out.println("No cousins exist for this node.");
-        return;
-    }
-
-    printCousins(root, targetNode, level);
-}
-
-private NodeType<T> searchNode(NodeType<T> currentNode, T key) {
-    if (currentNode == null) {
-        return null;
-    }
-    if (currentNode.info.compareTo(key) == 0) {
-        return currentNode;
-    }
-
-    NodeType<T> leftResult = searchNode(currentNode.left, key);
-    if (leftResult != null) {
-        return leftResult;
-    }
-
-    return searchNode(currentNode.right, key);
-}
-
-private int findHeight(NodeType<T> currentNode, T key, int level) {
-    if (currentNode == null) {
-        return 0;
-    }
-    if (currentNode.info.compareTo(key) == 0) {
-        return level;
-    }
-
-    int downLevel = findHeight(currentNode.left, key, level + 1);
-    if (downLevel != 0) {
-        return downLevel;
-    }
-
-    return findHeight(currentNode.right, key, level + 1);
-}
-
-private void printCousins(NodeType<T> currentNode, NodeType<T> node, int height) {
-    if (currentNode == null || height < 2) {
-        return;
-    }
-
-    if (height == 2) {
-        if ((currentNode.left == node) || (currentNode.right == node)) {
+                System.out.println("Invalid input.");
+                fileScan.close();
+                keyboard.close();
+                return;
+            }
+            fileScan.close();
+        } catch (FileNotFoundException fnfe) {
+            System.out.println("needs a file");
+            keyboard.close();
             return;
         }
-        if (currentNode.left != null) {
-            System.out.print(currentNode.left.info + " ");
+
+        System.out.println("Commands:\n" +
+                "  (i) - Insert Item\n" +
+                "  (d) - Delete Item\n" +
+                "  (p) - Print Tree\n" +
+                "  (s) - Search Item\n" +
+                "  (l) - Count Leaf Nodes\n" +
+                "  (sp) - Find Single Parents\n" +
+                "  (c) - Find Cousins\n" +
+                "  (q) - Quit program");
+
+        String keyboardIn = "";
+        while (!keyboardIn.equals("q")) {
+            System.out.println("Enter a command: ");
+            keyboardIn = keyboard.nextLine();
+            if (keyboardInput.equals("i")) {
+                intCommands(bstInt, keyboard, keyboardIn);
+            } else if (keyboardInput.equals("d")) {
+                doubleCommands(bstDouble, keyboard, keyboardIn);
+            } else if (keyboardInput.equals("s")) {
+                stringCommands(bstString, keyboard, keyboardIn);
+            }
         }
-        if (currentNode.right != null) {
-            System.out.print(currentNode.right.info + " ");
+        keyboard.close();
+    }
+
+    public static void intCommands(BinarySearchTree<Integer> bstInt, Scanner keyboard, String keyboardIn) {
+        String inputVal;
+        if (keyboardIn.equals("i")) {
+            System.out.println("Original list : ");
+            bstInt.inOrder();
+            System.out.println("\nEnter a number to insert: ");
+            inputVal = keyboard.nextLine();
+            if (!bstInt.search(Integer.parseInt(inputVal))) {
+                bstInt.insert(Integer.parseInt(inputVal));
+            } else {
+                System.out.println("Item already exists in tree.");
+            }
+            bstInt.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("d")) {
+            System.out.println("Original list : ");
+            bstInt.inOrder();
+            System.out.print("\nEnter a value to delete: ");
+            inputVal = keyboard.nextLine();
+            if (bstInt.search(Integer.parseInt(inputVal))) {
+                bstInt.delete(Integer.parseInt(inputVal));
+            } else {
+                System.out.println("Item does not exist in tree.");
+            }
+            bstInt.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("p")) {
+            System.out.print("In-order: ");
+            bstInt.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("s")) {
+            System.out.print("Enter a value to search: ");
+            inputVal = keyboard.nextLine();
+            boolean isTrue = bstInt.search(Integer.parseInt(inputVal));
+            if (isTrue) {
+                System.out.println("Item is found in the tree.");
+            } else {
+                System.out.println("Item is not found in the tree.");
+            }
+        } else if (keyboardIn.equals("l")) {
+            int leafs = bstInt.getNumLeafNodes();
+            System.out.println("Leaf count: " + leafs);
+        } else if (keyboardIn.equals("sp")) {
+            System.out.println("Single Parents: " + bstInt.getSingleParent());
+        } else if (keyboardIn.equals("c")) {
+            // Implement cousin functionality
         }
-    } else {
-        printCousins(currentNode.left, node, height - 1);
-        printCousins(currentNode.right, node, height - 1);
+    }
+
+    public static void doubleCommands(BinarySearchTree<Double> bstDouble, Scanner keyboard, String keyboardIn) {
+        String inputVal;
+        if (keyboardIn.equals("i")) {
+            System.out.println("Original list : ");
+            bstDouble.inOrder();
+            System.out.println("\nEnter a number to insert: ");
+            inputVal = keyboard.nextLine();
+            if (!bstDouble.search(Double.parseDouble(inputVal))) {
+                bstDouble.insert(Double.parseDouble(inputVal));
+            } else {
+                System.out.println("Item already exists in tree.");
+            }
+            bstDouble.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("d")) {
+            System.out.println("Original list : ");
+            bstDouble.inOrder();
+            System.out.print("\nEnter a value to delete: ");
+            inputVal = keyboard.nextLine();
+            if (bstDouble.search(Double.parseDouble(inputVal))) {
+                bstDouble.delete(Double.parseDouble(inputVal));
+            } else {
+                System.out.println("Item does not exist in tree.");
+            }
+            bstDouble.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("p")) {
+            System.out.print("In-order: ");
+            bstDouble.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("s")) {
+            System.out.print("Enter a value to search: ");
+            inputVal = keyboard.nextLine();
+            boolean isTrue = bstDouble.search(Double.parseDouble(inputVal));
+            if (isTrue) {
+                System.out.println("Item is found in the tree.");
+            } else {
+                System.out.println("Item is not found in the tree.");
+            }
+        } else if (keyboardIn.equals("l")) {
+            int leafs = bstDouble.getNumLeafNodes();
+            System.out.println("Leaf count: " + leafs);
+        } else if (keyboardIn.equals("sp")) {
+            System.out.println("Single Parents: " + bstDouble.getSingleParent());
+        } else if (keyboardIn.equals("c")) {
+            // Implement cousin functionality
+        }
+    }
+
+    public static void stringCommands(BinarySearchTree<String> bstString, Scanner keyboard, String keyboardIn) {
+        String inputVal;
+        if (keyboardIn.equals("i")) {
+            System.out.println("Original list : ");
+            bstString.inOrder();
+            System.out.println("\nEnter a string to insert: ");
+            inputVal = keyboard.nextLine();
+            if (!bstString.search(inputVal)) {
+                bstString.insert(inputVal);
+            } else {
+                System.out.println("Item already exists in tree.");
+            }
+            bstString.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("d")) {
+            System.out.println("Original list : ");
+            bstString.inOrder();
+            System.out.print("\nEnter a value to delete: ");
+            inputVal = keyboard.nextLine();
+            if (bstString.search(inputVal)) {
+                bstString.delete(inputVal);
+            } else {
+                System.out.println("Item does not exist in tree.");
+            }
+            bstString.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("p")) {
+            System.out.print("In-order: ");
+            bstString.inOrder();
+            System.out.println();
+        } else if (keyboardIn.equals("s")) {
+            System.out.print("Enter a value to search: ");
+            inputVal = keyboard.nextLine();
+            boolean isTrue = bstString.search(inputVal);
+            if (isTrue) {
+                System.out.println("Item is found in the tree.");
+            } else {
+                System.out.println("Item is not found in the tree.");
+            }
+        } else if (keyboardIn.equals("l")) {
+            int leafs = bstString.getNumLeafNodes();
+            System.out.println("Leaf count: " + leafs);
+        } else if (keyboardIn.equals("sp")) {
+            System.out.println("Single Parents: " + bstString.getSingleParent());
+        } else if (keyboardIn.equals("c")) {
+           System.out.print("Enter a value to search: ");
+            inputVal = keyboard.nextLine();
+            boolean isTrue = bstString.search(inputVal);
+            if (isTrue) {
+            
+                System.out.println(inputVal + " cousins: ");
+                bstString.getCousins(inputVal);
+                System.out.println();
+            } else {
+                System.out.println("Item is not found in the tree.");
+            }
+        }
     }
 }
-
-} // BinarySearchTree
