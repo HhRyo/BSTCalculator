@@ -114,7 +114,17 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
         } else if (keyboardIn.equals("sp")) {
             System.out.println("Single Parents: " + bstInt.getSingleParent());
         } else if (keyboardIn.equals("c")) {
-            // Implement cousin functionality
+            System.out.print("Enter a value to search: ");
+            inputVal = keyboard.nextLine();
+           boolean isTrue = bstInt.search(Integer.parseInt(inputVal));
+            if (isTrue) {
+            
+                System.out.println(inputVal + " cousins: ");
+                bstInt.getCousins(Integer.parseInt(inputVal));
+                System.out.println();
+            } else {
+                System.out.println("Item is not found in the tree.");
+            }
         }
     }
 
@@ -163,7 +173,17 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
         } else if (keyboardIn.equals("sp")) {
             System.out.println("Single Parents: " + bstDouble.getSingleParent());
         } else if (keyboardIn.equals("c")) {
-            // Implement cousin functionality
+            System.out.print("Enter a value to search: ");
+            inputVal = keyboard.nextLine();
+           boolean isTrue = bstDouble.search(Double.parseDouble(inputVal));
+            if (isTrue) {
+            
+                System.out.println(inputVal + " cousins: ");
+                bstDouble.getCousins(Double.parseDouble(inputVal));
+                System.out.println();
+            } else {
+                System.out.println("Item is not found in the tree.");
+            }
         }
     }
 
