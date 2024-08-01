@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
 public class BinarySearchTreeDriver<T extends Comparable<T>> {
 
     public static void main(String[] args) {
-        //initializing for different types of files
+        //initializing for different types of files (only using Integer, Double, String types)
         BinarySearchTree<Integer> bstInt = new BinarySearchTree<>();
         BinarySearchTree<Double> bstDouble = new BinarySearchTree<>();
         BinarySearchTree<String> bstString = new BinarySearchTree<>();
@@ -53,6 +53,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             return;
         } // unsupported file type
 
+       // Actual Program Commands: Used to manipulate the bst<> list and/or find information regarding its nodes/etc.
         System.out.println("Commands:\n" +
                 "  (i) - Insert Item\n" +
                 "  (d) - Delete Item\n" +
@@ -64,20 +65,22 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
                 "  (q) - Quit program");
 
         String keyboardIn = "";
-        while (!keyboardIn.equals("q")) {
+        while (!keyboardIn.equals("q")) { // quit command + ongoing file loop until quit is called 
             System.out.println("Enter a command: ");
             keyboardIn = keyboard.nextLine();
+           //we created different methods to support the unique file type the user provides
             if (keyboardInput.equals("i")) {
-                intCommands(bstInt, keyboard, keyboardIn);
+                intCommands(bstInt, keyboard, keyboardIn); //for int files 
             } else if (keyboardInput.equals("d")) {
-                doubleCommands(bstDouble, keyboard, keyboardIn);
+                doubleCommands(bstDouble, keyboard, keyboardIn); //for double files
             } else if (keyboardInput.equals("s")) {
-                stringCommands(bstString, keyboard, keyboardIn);
+                stringCommands(bstString, keyboard, keyboardIn); // for string files
             }
         }
         keyboard.close();
     }
 
+   // commands for int file types
     public static void intCommands(BinarySearchTree<Integer> bstInt, Scanner keyboard, String keyboardIn) {
         String inputVal;
         if (keyboardIn.equals("i")) {
@@ -138,6 +141,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
         }
     }
 
+   //commands for double file types
     public static void doubleCommands(BinarySearchTree<Double> bstDouble, Scanner keyboard, String keyboardIn) {
         String inputVal;
         if (keyboardIn.equals("i")) {
@@ -198,6 +202,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
         }
     }
 
+   // commands for String file types 
     public static void stringCommands(BinarySearchTree<String> bstString, Scanner keyboard, String keyboardIn) {
         String inputVal;
         if (keyboardIn.equals("i")) {
