@@ -70,14 +70,12 @@ public class BinarySearchTree<T extends Comparable<T>> {
     private boolean searchRecursive(NodeType<T> root, T item){
         if (root == null) {
             return false;
-        }
-            if(root.info.compareTo(item) > 0){
-                searchRecursive(root.right, item);
-            } // if
-            else if (root.info.compareTo(item) < 0){
-                searchRecursive(root.left, item);
-            } // else if
+        } else if (root.info.compareTo(item) == 0) {
             return true;
+        } else if (root.info.compareTo(item) < 0) {
+            return searchRecursive(root.right, item);
+        }
+        return searchRecursive(root.left, item);
     } // searchRecursive
 
 
