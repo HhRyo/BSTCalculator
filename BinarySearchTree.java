@@ -3,8 +3,6 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     public BinarySearchTree() {
         this.root = null;
-        this.root.left = null;
-        this.root.right = null;
     } // binarySearchTree
 
     public void insert(T key) {
