@@ -83,7 +83,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
    // commands for int file types
     public static void intCommands(BinarySearchTree<Integer> bstInt, Scanner keyboard, String keyboardIn) {
         String inputVal;
-        if (keyboardIn.equals("i")) {
+        if (keyboardIn.equals("i")) { //insert command
             System.out.println("Original list : ");
             bstInt.inOrder();
             System.out.println("\nEnter a number to insert: ");
@@ -95,7 +95,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             }
             bstInt.inOrder();
             System.out.println();
-        } else if (keyboardIn.equals("d")) {
+        } else if (keyboardIn.equals("d")) { // delete command
             System.out.println("Original list : ");
             bstInt.inOrder();
             System.out.print("\nEnter a value to delete: ");
@@ -107,11 +107,11 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             }
             bstInt.inOrder();
             System.out.println();
-        } else if (keyboardIn.equals("p")) {
+        } else if (keyboardIn.equals("p")) { // print command 
             System.out.print("In-order: ");
             bstInt.inOrder();
             System.out.println();
-        } else if (keyboardIn.equals("s")) {
+        } else if (keyboardIn.equals("s")) { // search command
             System.out.print("Enter a value to search: ");
             inputVal = keyboard.nextLine();
             boolean isTrue = bstInt.search(Integer.parseInt(inputVal));
@@ -120,14 +120,14 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             } else {
                 System.out.println("Item is not found in the tree.");
             }
-        } else if (keyboardIn.equals("l")) {
+        } else if (keyboardIn.equals("l")) { // leaf node command
             int leafs = bstInt.getNumLeafNodes();
             System.out.println("Leaf count: " + leafs);
         } else if (keyboardIn.equals("sp")) {
             System.out.print("Single Parents: ");
             bstInt.getSingleParent();
             System.out.println();
-        } else if (keyboardIn.equals("c")) {
+        } else if (keyboardIn.equals("c")) { // cousins command 
             System.out.print("Enter a value to search: ");
             inputVal = keyboard.nextLine();
            boolean isTrue = bstInt.search(Integer.parseInt(inputVal));
@@ -144,7 +144,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
    //commands for double file types
     public static void doubleCommands(BinarySearchTree<Double> bstDouble, Scanner keyboard, String keyboardIn) {
         String inputVal;
-        if (keyboardIn.equals("i")) {
+        if (keyboardIn.equals("i")) { // insert command
             System.out.println("Original list : ");
             bstDouble.inOrder();
             System.out.println("\nEnter a number to insert: ");
@@ -156,7 +156,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             }
             bstDouble.inOrder();
             System.out.println();
-        } else if (keyboardIn.equals("d")) {
+        } else if (keyboardIn.equals("d")) { //delete command
             System.out.println("Original list : ");
             bstDouble.inOrder();
             System.out.print("\nEnter a value to delete: ");
@@ -168,11 +168,11 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             }
             bstDouble.inOrder();
             System.out.println();
-        } else if (keyboardIn.equals("p")) {
+        } else if (keyboardIn.equals("p")) { // print command (inorder traversal)
             System.out.print("In-order: ");
             bstDouble.inOrder();
             System.out.println();
-        } else if (keyboardIn.equals("s")) {
+        } else if (keyboardIn.equals("s")) { //search command
             System.out.print("Enter a value to search: ");
             inputVal = keyboard.nextLine();
             boolean isTrue = bstDouble.search(Double.parseDouble(inputVal));
@@ -181,14 +181,14 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             } else {
                 System.out.println("Item is not found in the tree.");
             }
-        } else if (keyboardIn.equals("l")) {
+        } else if (keyboardIn.equals("l")) { //leaf node command
             int leafs = bstDouble.getNumLeafNodes();
             System.out.println("Leaf count: " + leafs);
-        } else if (keyboardIn.equals("sp")) {
+        } else if (keyboardIn.equals("sp")) { //single parent commands 
             System.out.println("Single Parents: ");
             bstDouble.getSingleParent();
             System.out.println();
-        } else if (keyboardIn.equals("c")) {
+        } else if (keyboardIn.equals("c")) { //getCousins commands
             System.out.print("Enter a value to search: ");
             inputVal = keyboard.nextLine();
            boolean isTrue = bstDouble.search(Double.parseDouble(inputVal));
