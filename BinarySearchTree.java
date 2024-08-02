@@ -136,14 +136,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
     // get Cousins methods
    public void getCousins(T key) {
     if (root == null || !search(key)) {
-        System.out.println("No cousins found.");
+        System.out.println("None");
         return;
     }
 
     int level = findHeight(root, key, 1);
 
     if (level <= 2) {
-        System.out.println("No cousins exist for this node.");
+        System.out.println("None");
         return;
     }
 
