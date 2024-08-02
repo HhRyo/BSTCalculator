@@ -182,7 +182,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             int leafs = bstDouble.getNumLeafNodes();
             System.out.println("Leaf count: " + leafs);
         } else if (keyboardIn.equals("sp")) { //single parent commands 
-            System.out.println("Single Parents: ");
+            System.out.print("Single Parents: ");
             bstDouble.getSingleParent();
             System.out.println();
         } else if (keyboardIn.equals("c")) { //getCousins commands
@@ -246,7 +246,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             System.out.println("Leaf count: " + leafs);
            //Single Parents 
         } else if (keyboardIn.equals("sp")) {
-            System.out.println("Single Parents: ");
+            System.out.print("Single Parents: ");
             bstString.getSingleParent();
             System.out.println();
            // find cousins code 
