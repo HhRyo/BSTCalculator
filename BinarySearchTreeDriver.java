@@ -66,7 +66,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
 
         String keyboardIn = "";
         while (!keyboardIn.equals("q")) { // quit command + ongoing file loop until quit is called 
-            System.out.println("Enter a command: ");
+            System.out.print("Enter a command: ");
             keyboardIn = keyboard.nextLine();
            //we created different methods to support the unique file type the user provides
             if (keyboardInput.equals("i")) {
@@ -132,11 +132,8 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             inputVal = keyboard.nextLine();
            boolean isTrue = bstInt.search(Integer.parseInt(inputVal));
             if (isTrue) {
-                System.out.println(inputVal + " cousins: ");
                 bstInt.getCousins(Integer.parseInt(inputVal));
                 System.out.println();
-            } else {
-                System.out.println("Item is not found in the tree.");
             }
         }
     }
@@ -193,12 +190,9 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             inputVal = keyboard.nextLine();
            boolean isTrue = bstDouble.search(Double.parseDouble(inputVal));
             if (isTrue) {
-                System.out.println(inputVal + " cousins: ");
                 bstDouble.getCousins(Double.parseDouble(inputVal));
                 System.out.println();
-            } else {
-                System.out.println("Item is not found in the tree.");
-            }
+            } 
         }
     }
 
@@ -261,11 +255,8 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             inputVal = keyboard.nextLine();
             boolean isTrue = bstString.search(inputVal);
             if (isTrue) {
-                System.out.println(inputVal + " cousins: ");
                 bstString.getCousins(inputVal);
                 System.out.println();
-            } else {
-                System.out.println("Item is not found in the tree.");
             }
         }
     }
