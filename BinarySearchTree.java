@@ -135,7 +135,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
     // get Cousins methods
     public void getCousins(NodeType<T> node) {
-        if (root == null || node == null) {
+        if (root == null || node == null) { //base case 
             System.out.println("No cousins found.");
             return;
         }
@@ -150,28 +150,28 @@ public class BinarySearchTree<T extends Comparable<T>> {
         printCousins(root, node, level);
     }
 
-    private int findHeight(NodeType<T> currentNode, T key, int level) {
+    private int findHeight(NodeType<T> currentNode, T key, int level) { // finding the height so that we can compare for future purposes 
         if (currentNode == null) {
             return 0;
         }
         if (currentNode.info.compareTo(key) == 0) {
-            return level;
+            return level; 
         }
 
         int downLevel = findHeight(currentNode.left, key, level + 1);
         if (downLevel != 0) {
-            return downLevel;
+            return downLevel;  
         }
 
-        return findHeight(currentNode.right, key, level + 1);
+        return findHeight(currentNode.right, key, level + 1);// recursive until height is reached. 
     }
 
     private void printCousins(NodeType<T> currentNode, NodeType<T> node, int height) {
-        if (currentNode == null || height < 2) {
+        if (currentNode == null || height < 2) { // nothing to do with these cases 
             return;
         }
 
-        if (height == 2) {
+        if (height == 2) { // because height 2 has a different case 
             if ((currentNode.left == node) || (currentNode.right == node)) {
                 return;
             }
