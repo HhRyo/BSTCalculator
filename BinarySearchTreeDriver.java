@@ -205,6 +205,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
    // commands for String file types 
     public static void stringCommands(BinarySearchTree<String> bstString, Scanner keyboard, String keyboardIn) {
         String inputVal;
+       //insert code 
         if (keyboardIn.equals("i")) {
             System.out.println("Original list : ");
             bstString.inOrder();
@@ -217,6 +218,7 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             }
             bstString.inOrder();
             System.out.println();
+      //delete code
         } else if (keyboardIn.equals("d")) {
             System.out.println("Original list : ");
             bstString.inOrder();
@@ -229,10 +231,12 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             }
             bstString.inOrder();
             System.out.println();
+         //print code 
         } else if (keyboardIn.equals("p")) {
             System.out.print("In-order: ");
             bstString.inOrder();
             System.out.println();
+           //search code
         } else if (keyboardIn.equals("s")) {
             System.out.print("Enter a value to search: ");
             inputVal = keyboard.nextLine();
@@ -242,13 +246,16 @@ public class BinarySearchTreeDriver<T extends Comparable<T>> {
             } else {
                 System.out.println("Item is not found in the tree.");
             }
+           //leaf Nodes 
         } else if (keyboardIn.equals("l")) {
             int leafs = bstString.getNumLeafNodes();
             System.out.println("Leaf count: " + leafs);
+           //Single Parents 
         } else if (keyboardIn.equals("sp")) {
             System.out.println("Single Parents: ");
             bstString.getSingleParent();
             System.out.println();
+           // find cousins code 
         } else if (keyboardIn.equals("c")) {
            System.out.print("Enter a value to search: ");
             inputVal = keyboard.nextLine();
