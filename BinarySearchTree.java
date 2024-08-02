@@ -134,57 +134,60 @@ public class BinarySearchTree<T extends Comparable<T>> {
 
 
     // get Cousins methods
-    public void getCousins(NodeType<T> node) {
-        if (root == null || node == null) { //base case 
-            System.out.println("No cousins found.");
-            return;
-        }
-
-        int level = findHeight(root, node.info, 1);
-
-        if (level <= 2) {
-            System.out.println("No cousins exist for this node.");
-            return;
-        }
-
-        printCousins(root, node, level);
+   public void getCousins(T key) {
+    if (root == null || !search(key)) {
+        System.out.println("No cousins found.");
+        return;
     }
 
-    private int findHeight(NodeType<T> currentNode, T key, int level) { // finding the height so that we can compare for future purposes 
-        if (currentNode == null) {
-            return 0;
-        }
-        if (currentNode.info.compareTo(key) == 0) {
-            return level; 
-        }
+    int level = findHeight(root, key, 1);
 
-        int downLevel = findHeight(currentNode.left, key, level + 1);
-        if (downLevel != 0) {
-            return downLevel;  
-        }
-
-        return findHeight(currentNode.right, key, level + 1);// recursive until height is reached. 
+    if (level <= 2) {
+        System.out.println("No cousins exist for this node.");
+        return;
     }
 
-    private void printCousins(NodeType<T> currentNode, NodeType<T> node, int height) {
-        if (currentNode == null || height < 2) { // nothing to do with these cases 
+    System.out.print(key + " cousins: ");
+    printCousins(root, key, level);
+    System.out.println();
+}
+
+private int findHeight(NodeType<T> currentNode, T key, int level) {
+    if (currentNode == null) {
+        return 0;
+    }
+    if (currentNode.info.compareTo(key) == 0) {
+        return level;
+    }
+
+    int downLevel = findHeight(currentNode.left, key, level + 1);
+    if (downLevel != 0) {
+        return downLevel;
+    }
+
+    return findHeight(currentNode.right, key, level + 1);
+}
+
+private void printCousins(NodeType<T> currentNode, T key, int height) {
+    if (currentNode == null || height < 2) {
+        return;
+    }
+
+    if (height == 2) {
+        if ((currentNode.left != null && currentNode.left.info.compareTo(key) == 0) ||
+            (currentNode.right != null && currentNode.right.info.compareTo(key) == 0)) {
             return;
         }
-
-        if (height == 2) { // because height 2 has a different case 
-            if ((currentNode.left == node) || (currentNode.right == node)) {
-                return;
-            }
-            if (currentNode.left != null) {
-                System.out.print(currentNode.left.info + " ");
-            }
-            if (currentNode.right != null) {
-                System.out.print(currentNode.right.info + " ");
-            }
-        } else {
-            printCousins(currentNode.left, node, height - 1);
-            printCousins(currentNode.right, node, height - 1);
+        if (currentNode.left != null) {
+            System.out.print(currentNode.left.info + " ");
         }
+        if (currentNode.right != null) {
+            System.out.print(currentNode.right.info + " ");
+        }
+    } else {
+        printCousins(currentNode.left, key, height - 1);
+        printCousins(currentNode.right, key, height - 1);
     }
+}
 
 } // BinarySearchTree
